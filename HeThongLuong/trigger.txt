@@ -1,0 +1,27 @@
+-- Full Trigger DDL Statements
+-- Note: Only CREATE TRIGGER statements are allowed
+DELIMITER $$
+
+USE `payroll`$$
+
+CREATE
+DEFINER=`nam`@`%`
+TRIGGER `payroll`.`monthlypayroll_BINS`
+BEFORE UPDATE ON `payroll`.`monthlypayroll`
+FOR EACH ROW
+-- Edit trigger body code below this line. Do not edit lines above this one
+begin
+	if new.numberofsickday <> old.numberofsickday
+		or new.numberofdayoff <> old.numberofdayoff
+	then
+		begin
+			set new.sickDeducted = sickDeducted(new.totalsalary, new.numberofsickday);
+			set new.dayoffDeducted = offDeducted(new.totalsalary, new.numberofdayoff);
+			set new.actualSalary = new.totalsalary - new.hideducted - new.sideducted - new.uideducted - new.sickdeducted - new.dayoffdeducted;
+			
+		end;
+
+	end if;
+
+end$$
+

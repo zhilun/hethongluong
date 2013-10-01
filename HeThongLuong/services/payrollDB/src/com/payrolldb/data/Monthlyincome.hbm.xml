@@ -1,0 +1,60 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.payrolldb.data.Monthlyincome" table="monthlyincome" dynamic-insert="false" dynamic-update="false">
+        <composite-id name="id" class="com.payrolldb.data.MonthlyincomeId">
+            <key-property name="eid" type="integer">
+                <column name="Eid"/>
+            </key-property>
+            <key-property name="month" type="integer">
+                <column name="month"/>
+            </key-property>
+            <key-property name="year" type="integer">
+                <column name="year"/>
+            </key-property>
+        </composite-id>
+        <property name="sumSalary" type="float">
+            <column name="SumSalary" precision="12"/>
+        </property>
+        <property name="allowance" type="float">
+            <column name="Allowance" precision="12"/>
+        </property>
+        <property name="overtime" type="float">
+            <column name="Overtime" precision="12"/>
+        </property>
+        <property name="otherIncome" type="float">
+            <column name="OtherIncome" precision="12"/>
+        </property>
+        <property name="totalIncome" type="float">
+            <column name="TotalIncome" precision="12"/>
+        </property>
+        <property name="dependents" type="integer">
+            <column name="Dependents"/>
+        </property>
+        <property name="amountDeducted" type="float">
+            <column name="AmountDeducted" precision="12"/>
+        </property>
+        <property name="amountTaxed" type="float">
+            <column name="AmountTaxed" precision="12"/>
+        </property>
+        <property name="taxPayment" type="float">
+            <column name="TaxPayment" precision="12"/>
+        </property>
+        <property name="lastChangeUser" type="string">
+            <column name="LastChangeUser" length="50"/>
+        </property>
+        <property name="lastChangeDate" type="timestamp">
+            <column name="LastChangeDate" length="19"/>
+        </property>
+        <many-to-one
+            name="employeeinfo"
+            class="com.payrolldb.data.Employeeinfo"
+            update="false"
+            insert="false"
+            fetch="select">
+            <column name="Eid" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="payrollstatusdef" class="com.payrolldb.data.Payrollstatusdef">
+            <column name="PayrollStatusID" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

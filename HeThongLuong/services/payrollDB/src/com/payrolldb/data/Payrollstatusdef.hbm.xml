@@ -1,0 +1,30 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.payrolldb.data.Payrollstatusdef" table="payrollstatusdef" dynamic-insert="false" dynamic-update="false">
+        <id name="payrollStatusId" type="integer">
+            <column name="PayrollStatusID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="payrollStatusName" type="string">
+            <column name="PayrollStatusName" length="20"/>
+        </property>
+        <set name="monthlyincomes" inverse="true" cascade="">
+            <key>
+                <column name="PayrollStatusID" not-null="true"/>
+            </key>
+            <one-to-many class="com.payrolldb.data.Monthlyincome"/>
+        </set>
+        <set name="additionalpayrolls" inverse="true" cascade="">
+            <key>
+                <column name="PayrollStatusID" not-null="true"/>
+            </key>
+            <one-to-many class="com.payrolldb.data.Additionalpayroll"/>
+        </set>
+        <set name="monthlypayrolls" inverse="true" cascade="">
+            <key>
+                <column name="PayrollStatusID" not-null="true"/>
+            </key>
+            <one-to-many class="com.payrolldb.data.Monthlypayroll"/>
+        </set>
+    </class>
+</hibernate-mapping>

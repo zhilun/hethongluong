@@ -1,0 +1,29 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.payrolldb.data.Userrole" table="userrole" dynamic-insert="false" dynamic-update="false">
+        <composite-id name="id" class="com.payrolldb.data.UserroleId">
+            <key-property name="userId" type="integer">
+                <column name="userID"/>
+            </key-property>
+            <key-property name="roleId" type="integer">
+                <column name="roleID"/>
+            </key-property>
+        </composite-id>
+        <many-to-one
+            name="user"
+            class="com.payrolldb.data.User"
+            update="false"
+            insert="false"
+            fetch="select">
+            <column name="userID" not-null="true"/>
+        </many-to-one>
+        <many-to-one
+            name="roledefinition"
+            class="com.payrolldb.data.Roledefinition"
+            update="false"
+            insert="false"
+            fetch="select">
+            <column name="roleID" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

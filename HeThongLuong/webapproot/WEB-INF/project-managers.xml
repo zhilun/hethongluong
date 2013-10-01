@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<beans xsi:schemaLocation="http://schema.cloudfoundry.org/spring http://schema.cloudfoundry.org/spring/cloudfoundry-spring-0.8.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd" xmlns="http://www.springframework.org/schema/beans" xmlns:cloud="http://schema.cloudfoundry.org/spring" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <bean class="com.wavemaker.runtime.service.TypeManager" parent="typeManagerBase" scope="singleton" id="typeManager">
+        <property name="types">
+            <map merge="true">
+                <entry key="encryptService">
+                    <list/>
+                </entry>
+                <entry key="payrollDB">
+                    <list>
+                        <value>com.payrolldb.data.Additionalpayroll</value>
+                        <value>com.payrolldb.data.Departmentdefinition</value>
+                        <value>com.payrolldb.data.Employeeinfo</value>
+                        <value>com.payrolldb.data.Monthlyincome</value>
+                        <value>com.payrolldb.data.Monthlypayroll</value>
+                        <value>com.payrolldb.data.Payrollstatusdef</value>
+                        <value>com.payrolldb.data.Roledefinition</value>
+                        <value>com.payrolldb.data.Salarycodedef</value>
+                        <value>com.payrolldb.data.Systemparameter</value>
+                        <value>com.payrolldb.data.User</value>
+                        <value>com.payrolldb.data.Userrole</value>
+                        <value>com.payrolldb.data.UserroleId</value>
+                        <value>com.payrolldb.data.AdditionalpayrollId</value>
+                        <value>com.payrolldb.data.MonthlyincomeId</value>
+                        <value>com.payrolldb.data.MonthlypayrollId</value>
+                    </list>
+                </entry>
+                <entry key="payrollService">
+                    <list/>
+                </entry>
+                <entry key="securityService">
+                    <list/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+</beans>

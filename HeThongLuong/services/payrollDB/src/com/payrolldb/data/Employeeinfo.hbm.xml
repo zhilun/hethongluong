@@ -1,0 +1,66 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.payrolldb.data.Employeeinfo" table="employeeinfo" dynamic-insert="false" dynamic-update="false">
+        <id name="eid" type="integer">
+            <column name="Eid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="name" type="string">
+            <column name="Name" length="50"/>
+        </property>
+        <property name="salaryFactor" type="float">
+            <column name="SalaryFactor" precision="12"/>
+        </property>
+        <property name="overFrameFactor" type="float">
+            <column name="OverFrameFactor" precision="12"/>
+        </property>
+        <property name="allowanceFactor" type="float">
+            <column name="AllowanceFactor" precision="12"/>
+        </property>
+        <property name="additionalFactor" type="float">
+            <column name="AdditionalFactor" precision="12"/>
+        </property>
+        <property name="harmFactor" type="float">
+            <column name="HarmFactor" precision="12"/>
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="50"/>
+        </property>
+        <property name="dependents" type="integer">
+            <column name="Dependents"/>
+        </property>
+        <property name="isDeleted" type="integer">
+            <column name="isDeleted"/>
+        </property>
+        <property name="lastChangeUser" type="string">
+            <column name="lastChangeUser" length="45"/>
+        </property>
+        <property name="lastChangeDate" type="timestamp">
+            <column name="lastChangeDate" length="19"/>
+        </property>
+        <many-to-one name="departmentdefinition" class="com.payrolldb.data.Departmentdefinition">
+            <column name="DeptID"/>
+        </many-to-one>
+        <many-to-one name="salarycodedef" class="com.payrolldb.data.Salarycodedef">
+            <column name="SalaryCodeID"/>
+        </many-to-one>
+        <set name="monthlyincomes" inverse="true" cascade="">
+            <key>
+                <column name="Eid" not-null="true"/>
+            </key>
+            <one-to-many class="com.payrolldb.data.Monthlyincome"/>
+        </set>
+        <set name="monthlypayrolls" inverse="true" cascade="">
+            <key>
+                <column name="Eid" not-null="true"/>
+            </key>
+            <one-to-many class="com.payrolldb.data.Monthlypayroll"/>
+        </set>
+        <set name="additionalpayrolls" inverse="true" cascade="">
+            <key>
+                <column name="Eid" not-null="true"/>
+            </key>
+            <one-to-many class="com.payrolldb.data.Additionalpayroll"/>
+        </set>
+    </class>
+</hibernate-mapping>

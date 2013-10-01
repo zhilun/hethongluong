@@ -1,0 +1,81 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.payrolldb.data.Monthlypayroll" table="monthlypayroll" dynamic-insert="false" dynamic-update="false">
+        <composite-id name="id" class="com.payrolldb.data.MonthlypayrollId">
+            <key-property name="eid" type="integer">
+                <column name="Eid"/>
+            </key-property>
+            <key-property name="month" type="integer">
+                <column name="Month"/>
+            </key-property>
+            <key-property name="year" type="integer">
+                <column name="year"/>
+            </key-property>
+        </composite-id>
+        <property name="salaryFactor" type="float">
+            <column name="SalaryFactor" precision="12"/>
+        </property>
+        <property name="salary" type="float">
+            <column name="Salary" precision="12"/>
+        </property>
+        <property name="overFrameFactor" type="float">
+            <column name="OverFrameFactor" precision="12"/>
+        </property>
+        <property name="overFrameSalary" type="float">
+            <column name="OverFrameSalary" precision="12"/>
+        </property>
+        <property name="allowanceFactor" type="float">
+            <column name="AllowanceFactor" precision="12"/>
+        </property>
+        <property name="allowance" type="float">
+            <column name="Allowance" precision="12"/>
+        </property>
+        <property name="totalSalary" type="float">
+            <column name="TotalSalary" precision="12"/>
+        </property>
+        <property name="paidBySi" type="float">
+            <column name="PaidBySI" precision="12"/>
+        </property>
+        <property name="hideducted" type="float">
+            <column name="HIDeducted" precision="12"/>
+        </property>
+        <property name="sideducted" type="float">
+            <column name="SIDeducted" precision="12"/>
+        </property>
+        <property name="uideducted" type="float">
+            <column name="UIDeducted" precision="12"/>
+        </property>
+        <property name="numberOfSickDay" type="float">
+            <column name="NumberOfSickDay" precision="12"/>
+        </property>
+        <property name="sickDeducted" type="float">
+            <column name="SickDeducted" precision="12"/>
+        </property>
+        <property name="numberOfDayOff" type="float">
+            <column name="NumberOfDayOff" precision="12"/>
+        </property>
+        <property name="dayOffDeducted" type="float">
+            <column name="DayOffDeducted" precision="12"/>
+        </property>
+        <property name="actualSalary" type="float">
+            <column name="ActualSalary" precision="12"/>
+        </property>
+        <property name="lastChangeUser" type="string">
+            <column name="LastChangeUser" length="50"/>
+        </property>
+        <property name="lastChangeDate" type="timestamp">
+            <column name="LastChangeDate" length="19"/>
+        </property>
+        <many-to-one
+            name="employeeinfo"
+            class="com.payrolldb.data.Employeeinfo"
+            update="false"
+            insert="false"
+            fetch="select">
+            <column name="Eid" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="payrollstatusdef" class="com.payrolldb.data.Payrollstatusdef">
+            <column name="PayrollStatusID" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

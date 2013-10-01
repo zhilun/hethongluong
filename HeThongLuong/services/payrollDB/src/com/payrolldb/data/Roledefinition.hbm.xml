@@ -1,0 +1,18 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.payrolldb.data.Roledefinition" table="roledefinition" dynamic-insert="false" dynamic-update="false">
+        <id name="roleId" type="integer">
+            <column name="roleID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="roleName" type="string">
+            <column name="roleName" length="45"/>
+        </property>
+        <set name="userroles" inverse="true" cascade="">
+            <key>
+                <column name="roleID" not-null="true"/>
+            </key>
+            <one-to-many class="com.payrolldb.data.Userrole"/>
+        </set>
+    </class>
+</hibernate-mapping>

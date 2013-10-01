@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<service xmlns="http://www.activegrid.com/namespaces/ServiceDefinitions/1.0" id="payrollService" class="nam.payroll.testService" CRUDService="false" type="JavaService" springFile="payrollService.spring.xml">
+    <operation name="actualSalary">
+        <parameter name="salary" typeRef="java.lang.Float" isList="false"/>
+        <parameter name="hideducted" typeRef="java.lang.Float" isList="false"/>
+        <parameter name="sideducted" typeRef="java.lang.Float" isList="false"/>
+        <parameter name="uideducted" typeRef="java.lang.Float" isList="false"/>
+        <parameter name="sickDeducted" typeRef="java.lang.Float" isList="false"/>
+        <parameter name="offDeducted" typeRef="java.lang.Float" isList="false"/>
+        <return typeRef="java.lang.Float" isList="false"/>
+    </operation>
+    <operation name="baseSalary">
+        <parameter name="salaryUnit" typeRef="java.lang.Float" isList="false"/>
+        <parameter name="factor" typeRef="java.lang.Float" isList="false"/>
+        <return typeRef="java.lang.Float" isList="false"/>
+    </operation>
+    <operation name="calculation">
+        <parameter name="salaryUnit" typeRef="java.lang.Float" isList="false"/>
+        <parameter name="salaryFactor" typeRef="java.lang.Float" isList="false"/>
+        <parameter name="overFrameFactor" typeRef="java.lang.Float" isList="false"/>
+        <parameter name="allowanceFactor" typeRef="java.lang.Float" isList="false"/>
+        <parameter name="hiFactor" typeRef="java.lang.Float" isList="false"/>
+        <parameter name="siFactor" typeRef="java.lang.Float" isList="false"/>
+        <parameter name="uiFactor" typeRef="java.lang.Float" isList="false"/>
+        <parameter name="offFactor" typeRef="java.lang.Float" isList="false"/>
+        <parameter name="sickFactor" typeRef="java.lang.Float" isList="false"/>
+        <parameter name="workingDays" typeRef="java.lang.Float" isList="false"/>
+        <parameter name="dayOff" typeRef="java.lang.Float" isList="false"/>
+        <parameter name="daySick" typeRef="java.lang.Float" isList="false"/>
+        <return typeRef="com.payrolldb.data.Monthlypayroll" isList="false"/>
+    </operation>
+    <operation name="formCalculation">
+        <parameter name="salaryFactor" typeRef="java.lang.Float" isList="false"/>
+        <parameter name="overFrameFactor" typeRef="java.lang.Float" isList="false"/>
+        <parameter name="allowanceFactor" typeRef="java.lang.Float" isList="false"/>
+        <parameter name="dayOff" typeRef="java.lang.Float" isList="false"/>
+        <parameter name="daySick" typeRef="java.lang.Float" isList="false"/>
+        <return typeRef="com.payrolldb.data.Monthlypayroll" isList="false"/>
+    </operation>
+    <operation name="getSystemParameters">
+        <return typeRef="com.payrolldb.data.Systemparameter" isList="true"/>
+    </operation>
+    <operation name="insuranceDeducted">
+        <parameter name="salary" typeRef="java.lang.Float" isList="false"/>
+        <parameter name="factor" typeRef="java.lang.Float" isList="false"/>
+        <return typeRef="java.lang.Float" isList="false"/>
+    </operation>
+    <operation name="sampleJavaOperation">
+        <return typeRef="java.lang.String" isList="false"/>
+    </operation>
+    <operation name="sickDeducted">
+        <parameter name="salary" typeRef="java.lang.Float" isList="false"/>
+        <parameter name="day" typeRef="java.lang.Float" isList="false"/>
+        <parameter name="factor" typeRef="java.lang.Float" isList="false"/>
+        <parameter name="workingdays" typeRef="java.lang.Float" isList="false"/>
+        <return typeRef="java.lang.Float" isList="false"/>
+    </operation>
+    <dataobjects/>
+</service>

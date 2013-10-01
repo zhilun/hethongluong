@@ -1,0 +1,18 @@
+{
+	"methods": [{
+		"name": "encryptService",
+		"operationType": null,
+		"parameters": [{
+			"name": "text",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "sampleJavaOperation",
+		"operationType": null,
+		"parameters": null,
+		"returnType": "java.lang.String"
+	}],
+	"serviceType": "JSON-RPC",
+	"serviceURL": "encryptService.json"
+}

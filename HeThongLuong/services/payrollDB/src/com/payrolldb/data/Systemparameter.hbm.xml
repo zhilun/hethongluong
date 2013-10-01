@@ -1,0 +1,42 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.payrolldb.data.Systemparameter" table="systemparameter" dynamic-insert="false" dynamic-update="false">
+        <id name="id" type="integer">
+            <column name="ID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="salaryUnit" type="float">
+            <column name="SalaryUnit" precision="12"/>
+        </property>
+        <property name="healthInsurance" type="float">
+            <column name="HealthInsurance" precision="12"/>
+        </property>
+        <property name="socialInsurance" type="float">
+            <column name="SocialInsurance" precision="12"/>
+        </property>
+        <property name="unemploymentInsurance" type="float">
+            <column name="UnemploymentInsurance" precision="12"/>
+        </property>
+        <property name="ignoreTaxAmount" type="float">
+            <column name="IgnoreTaxAmount" precision="12"/>
+        </property>
+        <property name="amountPerDependent" type="float">
+            <column name="AmountPerDependent" precision="12"/>
+        </property>
+        <property name="sickFactor" type="float">
+            <column name="sickFactor" precision="12"/>
+        </property>
+        <property name="offFactor" type="float">
+            <column name="offFactor" precision="12"/>
+        </property>
+        <property name="workingDaysPerMonth" type="float">
+            <column name="WorkingDaysPerMonth" precision="12"/>
+        </property>
+        <property name="lastChangeDate" type="timestamp">
+            <column name="LastChangeDate" length="19"/>
+        </property>
+        <property name="lastChangeUser" type="string">
+            <column name="LastChangeUser" length="50"/>
+        </property>
+    </class>
+</hibernate-mapping>

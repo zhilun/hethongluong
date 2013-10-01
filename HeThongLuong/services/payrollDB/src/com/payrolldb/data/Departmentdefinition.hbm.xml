@@ -1,0 +1,24 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.payrolldb.data.Departmentdefinition" table="departmentdefinition" dynamic-insert="false" dynamic-update="false">
+        <id name="deptId" type="integer">
+            <column name="DeptID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="deptName" type="string">
+            <column name="DeptName" length="100"/>
+        </property>
+        <property name="lastChangeDate" type="timestamp">
+            <column name="lastChangeDate" length="19"/>
+        </property>
+        <property name="lastChangeUser" type="string">
+            <column name="lastChangeUser" length="45"/>
+        </property>
+        <set name="employeeinfos" inverse="true" cascade="">
+            <key>
+                <column name="DeptID"/>
+            </key>
+            <one-to-many class="com.payrolldb.data.Employeeinfo"/>
+        </set>
+    </class>
+</hibernate-mapping>

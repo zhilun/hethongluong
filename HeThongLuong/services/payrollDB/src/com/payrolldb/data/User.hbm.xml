@@ -1,0 +1,30 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.payrolldb.data.User" table="user" dynamic-insert="false" dynamic-update="false">
+        <id name="userid" type="integer">
+            <column name="userid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="username" type="string">
+            <column name="username" length="45"/>
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="256"/>
+        </property>
+        <property name="lastchangedate" type="timestamp">
+            <column name="lastchangedate" length="19"/>
+        </property>
+        <property name="lastchangeuser" type="string">
+            <column name="lastchangeuser" length="45"/>
+        </property>
+        <property name="status" type="string">
+            <column name="status" length="20"/>
+        </property>
+        <set name="userroles" inverse="true" cascade="">
+            <key>
+                <column name="userID" not-null="true"/>
+            </key>
+            <one-to-many class="com.payrolldb.data.Userrole"/>
+        </set>
+    </class>
+</hibernate-mapping>
